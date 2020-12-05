@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./assets/stylesheet/css/banniere.css">
+</head>
+  <body>
+    <h1>Bannière JS (Methode commercial pour proposer une promo ou une possibilité d'inscription)</h1>
+     <div class="brief">
+      <p>
+        Vous développez un  site marchand.
+        <br>1/ Faites apparaitre une bannière (proposition d'inscription à la newsletter) 5 secondes après le chargement de la page.
+        <br>2/ Cette bannière doit être fixer en bas de page.
+        <br>3/ Placez un bouton en haut à droite de la bannière pour fermer celle-ci.
+        <br>(voir bannière.html)
+      </p>
+    </div>
+    <div class="banner">
+      <p>Inscription à la newsletter</p>
+      <button> x </button>
+    </div>
+    <script>
+      //on récupère la class banner
+      const banner = document.querySelector('.banner');
+      console.log(banner);
+      // Puis on récupère le boutton 
+      const button = document.querySelector('button');
+      console.log(button);
+      // Enlever le visuel de la class banner
+      banner.style.display = 'none';
+      // Maintenant on créer une function pour afficher la class banner avec des styles.
+      function ready() {
+        banner.style.display = 'block';
+        banner.style.background = 'orange';
+        banner.style.width = '500px';
+        banner.style.height = '100px';
+        banner.style.position= 'fixed';
+        banner.style.left = '200px';
+        banner.style.top = '500px';
+        button.style.position= 'absolute'
+        button.style.left= '470px';
+        button.style.top= '10px';
+
+      };
+
+      // Lancer l'événement DOMContentLoaded sur le document HTML pour lancer la fonction 'ready' - pour afficher la banniére 
+      document.addEventListener("DOMContentLoaded", (even) =>{
+        // Faites apparaitre une bannière 3 secondes après le chargement de la page.
+        setTimeout (ready, 3000);
+      });
+      // Mettre un évènement Click sur le bouton pour fermer la bannière
+      button.addEventListener("click", (even) =>{
+        banner.style.display = 'none';
+        button.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>

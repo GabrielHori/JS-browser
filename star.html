@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>allo ciné star</title>
+  <link rel="stylesheet" href="./assets/stylesheet/css/star.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+  <div class="star">
+    <h1>ALLO CINE ! Un click sur une des étoiles permettra des la passer au jaunes ainsi que toutes les étoiles précédentes
+    <br>(voir star.html)
+    </h1>
+
+    <ul id="list-of-stars">
+      <li><i class="fas fa-star"></i></li>
+      <li><i class="fas fa-star"></i></li>
+      <li><i class="fas fa-star"></i></li>
+      <li><i class="fas fa-star"></i></li>
+      <li><i class="fas fa-star"></i></li>
+    </ul>
+  </div>
+  <div class="test"></div>
+  <script>
+      // 1 - Sélectionner tous nos 'li'
+      const stars = document.querySelectorAll('#list-of-stars li');
+      // 2 - Appliquer un CSS par défault (les mettre en gris)
+      stars.forEach((star) => {
+        star.classList.add('star-unchecked');
+      })
+      
+      for(let index = 0; index < stars.length; index++){
+        // 3 - Mettre un écouteur sur chaque étoile (li)
+        stars[index].addEventListener('click', () => {
+          for(let a = 0; a <= index; a++){
+            // 4 - Jaunir celles qui sont avant la position 'index'
+            stars[a].classList.remove('star-unchecked');
+            stars[a].classList.add('star-checked');
+          }  
+          for(let b = index + 1; b < stars.length; b++){
+            // 5 - Griser toutes les étoiles qui suivent celle qui est cliqué (à partir de la position index)
+            stars[b].classList.remove('star-checked');
+            stars[b].classList.add('star-unchecked');
+          }
+        });
+      }  
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
